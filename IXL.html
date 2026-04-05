@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IXL | Math, Language Arts, Science, Social Studies, and Spanish</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: black; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        #main-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; }
+        iframe { width: 100%; height: 100%; border: none; display: block; }
+        
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: #09090b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #10b981;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            transition: opacity 0.5s ease-out;
+        }
+        .loading-title { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.05em; margin-bottom: 1rem; }
+        .loading-status { display: flex; align-items: center; gap: 0.5rem; }
+        .spinner {
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #10b981;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        #cloak { display: none; position: fixed; inset: 0; z-index: 200; background: white; color: #18181b; padding: 2rem; overflow-y: auto; box-sizing: border-box; }
+        .ixl-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e4e4e7; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .ixl-logo { display: flex; align-items: center; gap: 0.5rem; }
+        .ixl-box { width: 40px; height: 40px; background: #2563eb; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 4px; font-size: 1.25rem; }
+        .ixl-title { color: #1e40af; font-size: 1.5rem; font-weight: bold; }
+        .subjects { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .blue-text { color: #2563eb; list-style: none; padding: 0; line-height: 2; }
+        .gray-text { color: #52525b; list-style: none; padding: 0; line-height: 2; }
+        .success-box { background: #eff6ff; border: 1px solid #dbeafe; padding: 1.5rem; border-radius: 0.75rem; margin-top: 2rem; }
+        .footer { font-size: 0.75rem; color: #a1a1aa; margin-top: 2rem; border-top: 1px solid #e4e4e7; padding-top: 2rem; }
+        
+        #export-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+            background: rgba(24, 24, 27, 0.8);
+            border: 1px solid #3f3f46;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #a1a1aa;
+            font-weight: 700;
+            font-size: 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+        #export-btn:hover { background: #27272a; color: #10b981; }
+        
+        @media (max-width: 640px) { .subjects { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="loading-title">JOHNSON EDUCATION</div>
+        <div class="loading-status">
+            <div class="spinner"></div>
+            <span>Establishing encrypted tunnel...</span>
+        </div>
+    </div>
+
+    <div id="main-container">
+        <iframe id="content-frame" src="" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock"></iframe>
+    </div>
+
+    <div id="cloak">
+        <div class="ixl-header">
+            <div class="ixl-logo">
+                <div class="ixl-box">IXL</div>
+                <div class="ixl-title">Learning Platform</div>
+            </div>
+        </div>
+        <div class="subjects">
+            <div>
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Academic Subjects</h3>
+                <ul class="blue-text">
+                    <li>Mathematics</li><li>Science</li><li>English</li><li>History</li>
+                    <li>Literature</li><li>Writing</li><li>Reading</li><li>Social Studies</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Educational Services</h3>
+                <ul class="gray-text">
+                    <li>Online courses and college credit</li>
+                    <li>Exam preparation and test prep</li>
+                    <li>Tutoring and homework help</li>
+                    <li>Study guides and practice tests</li>
+                </ul>
+            </div>
+        </div>
+        <div class="success-box">
+            <h4 style="color: #1e40af; margin: 0 0 0.5rem 0;">Student Success</h4>
+            <p style="color: #1d4ed8; font-size: 0.875rem; margin: 0;">Comprehensive education platform for students, teachers, and lifelong learners. Access online courses, study materials, and interactive learning tools.</p>
+        </div>
+        <div class="footer">&copy; 2026 IXL Learning. All rights reserved.</div>
+    </div>
+
+    <div id="export-btn" onclick="location.reload()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>EXPORT</span>
+    </div>
+
+    <script>
+        const DATA = "L25pdy5lZGFjcmFzZWlnb3JmLy86c3B0dGg=";
+        const decrypt = (s) => atob(s).split('').reverse().join('');
+        
+        // Initialize
+        document.getElementById('content-frame').src = decrypt(DATA);
+        
+        // Loading screen timeout
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }, 2000);
+        
+        // Cloak logic
+        let isCloaked = false;
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                isCloaked = !isCloaked;
+                document.getElementById('main-container').style.display = isCloaked ? 'none' : 'block';
+                document.getElementById('cloak').style.display = isCloaked ? 'block' : 'none';
+                document.getElementById('export-btn').style.display = isCloaked ? 'none' : 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
